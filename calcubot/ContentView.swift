@@ -13,21 +13,31 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             LazyVGrid(columns: columns, spacing: 10) {
-                ForEach(0..<7) { i in
+                ForEach(0..<5) { i in
                     MyButton(index: i, callBack: onPress(index:))
                 }
                 
                 NavigationLink(destination: Text("Nav View")) {
-                    Rectangle()
+                    RoundedRectangle(cornerRadius: 10)
                         .fill(Color.red)
                         .frame(width: 100, height: 100).padding()
                     
                 }
                 NavigationLink(destination: GearRatio(MyVar: "Display")){
-                Rectangle()
-                            .fill(Color.green)
-                            .frame(width: 100, height: 100).padding()
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.green)
+                        .frame(width: 100, height: 100).padding()
                     
+                }
+                NavigationLink(destination: ThreeByThree()){
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.purple)
+                        .frame(width: 100, height: 100).padding()
+                }
+                NavigationLink(destination: MenuScreen()){
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.yellow)
+                        .frame(width: 100, height: 100).padding()
                 }
             }
             .sheet(isPresented: $isPresented) {
@@ -44,6 +54,7 @@ struct ContentView: View {
     }
 }
 
+
 struct MyButton: View {
     let index: Int
     let callBack: (Int) -> Void
@@ -51,9 +62,13 @@ struct MyButton: View {
         Button {
             callBack(index)
         } label: {
-            Rectangle()
-                .fill(Color.blue)
-                .frame(width:100, height: 100).padding()
+            ZStack(){
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.blue)
+                    .frame(width:100, height: 100).padding()
+                Text("\(index)")
+                    .foregroundColor(Color.orange)
+            }
         }
     }
 }
@@ -62,12 +77,43 @@ struct GearRatio: View {
     var MyVar: String
     
     var body: some View {
-        VStack {
-            Text("\(MyVar)")
-            Image("GearScreen")
-                .aspectRatio(contentMode: .fill)
+        Image("GearScreen")
+            .resizable()
+    }
+}
+
+struct ThreeByThree: View {
+    let columns = Array(repeating: GridItem(.flexible(minimum: 100, maximum: 100)), count: 3)
+    
+    var body: some View {
+        LazyVGrid(columns: columns, spacing: 10) {
+            ForEach(0..<9) { i in
+                Circle()
+                    .fill(Color.black)
+                    .frame(width:100, height: 100).padding()
+            }
         }
-        
+    }
+}
+
+struct MenuScreen: View {
+    var myMask: some View {
+        Circle()
+            .stroke(Color.black, lineWidth:50)
+    }
+    
+    var body: some View {
+        ZStack(){
+            Circle()
+                .fill(Color.orange)
+                .frame(width: 250, height: 250)
+                .mask(myMask)
+            Text("Donut")
+                .font(.caption)
+                .foregroundColor(.white)
+                .padding(5)
+                .background(.black)
+        }
     }
 }
 
@@ -76,3 +122,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
