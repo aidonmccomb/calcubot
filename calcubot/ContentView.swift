@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             LazyVGrid(columns: columns, spacing: 10) {
-                ForEach(0..<8) { i in
+                ForEach(0..<7) { i in
                     MyButton(index: i, callBack: onPress(index:))
                 }
                 
@@ -21,12 +21,21 @@ struct ContentView: View {
                     Rectangle()
                         .fill(Color.red)
                         .frame(width: 100, height: 100).padding()
+                    
+                }
+                NavigationLink(destination: GearRatio(MyVar: "Display")){
+                Rectangle()
+                            .fill(Color.green)
+                            .frame(width: 100, height: 100).padding()
+                    
                 }
             }
             .sheet(isPresented: $isPresented) {
                 Text("Modal View")
             }
             .navigationTitle("Calcubot")
+            .navigationBarTitleDisplayMode(.inline)
+            navigationBarTitleDisplayMode(.large)
         }.navigationViewStyle(.stack)
         
     }
@@ -46,10 +55,20 @@ struct MyButton: View {
                 .fill(Color.blue)
                 .frame(width:100, height: 100).padding()
         }
+    }
+}
+
+struct GearRatio: View {
+    var MyVar: String
+    
+    var body: some View {
+        VStack {
+            Text("\(MyVar)")
+            Image("GearScreen")
+                .aspectRatio(contentMode: .fill)
+        }
         
     }
-    
-    
 }
 
 struct ContentView_Previews: PreviewProvider {
