@@ -7,14 +7,28 @@
 
 import SwiftUI
 
+enum PresentedView: CaseIterable, CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .firstView : return "First"
+        case .secondView : return "Two"
+        case .thirdView : return "Three"
+        case .fourthView : return "four"
+        case .fifthView : return "five"
+        }
+    }
+    
+    case firstView, secondView, thirdView, fourthView, fifthView
+}
+
 struct ContentView: View {
     @State var isPresented: Bool = false
+    @State var selView: PresentedView?
     let columns = Array(repeating: GridItem(.flexible(minimum: 100, maximum: 100)), count: 3)
     var body: some View {
         NavigationView {
             LazyVGrid(columns: columns, spacing: 10) {
-                ForEach(0..<5) { i in
-                    MyButton(index: i, callBack: onPress(index:))
+                ForEach(PresentedView.allCases, id: \.description) { i in                   MyButton(index: i, callBack: onPress(index:))
                 }
                 
                 NavigationLink(destination: Text("Nav View")) {
@@ -23,7 +37,7 @@ struct ContentView: View {
                         .frame(width: 100, height: 100).padding()
                     
                 }
-                NavigationLink(destination: GearRatio(MyVar: "Display")){
+                NavigationLink(destination: GearRatioScreen()){
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color.green)
                         .frame(width: 100, height: 100).padding()
@@ -40,8 +54,21 @@ struct ContentView: View {
                         .frame(width: 100, height: 100).padding()
                 }
             }
-            .sheet(isPresented: $isPresented) {
-                Text("Modal View")
+            .sheet(isPresented: .init(get: {
+                selView != nil
+            }, set: { isShowing in
+                if isShowing == false {
+                    selView = nil
+                }
+            })) {
+                switch selView {
+                case .firstView? : Text("first Screen")
+                case .secondView? : Text("second screen")
+                case .thirdView? : Text("3 screen")
+                case .fourthView? : Text("4 screen")
+                case .fifthView? : Text("5 screen")
+                case nil : EmptyView()
+                }
             }
             .navigationTitle("Calcubot")
             .navigationBarTitleDisplayMode(.inline)
@@ -49,15 +76,16 @@ struct ContentView: View {
         }.navigationViewStyle(.stack)
         
     }
-    func onPress(index:Int) {
-        isPresented = true
+    func onPress(index:PresentedView) {
+        //isPresented = true
+        selView = index
     }
 }
 
 
-struct MyButton: View {
-    let index: Int
-    let callBack: (Int) -> Void
+struct MyButton <Context: CustomStringConvertible> : View {
+    let index: Context
+    let callBack: (Context) -> Void
     var body: some View {
         Button {
             callBack(index)
@@ -66,19 +94,10 @@ struct MyButton: View {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.blue)
                     .frame(width:100, height: 100).padding()
-                Text("\(index)")
+                Text(index.description)
                     .foregroundColor(Color.orange)
             }
         }
-    }
-}
-
-struct GearRatio: View {
-    var MyVar: String
-    
-    var body: some View {
-        Image("GearScreen")
-            .resizable()
     }
 }
 
