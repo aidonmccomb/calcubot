@@ -62,7 +62,7 @@ struct ContentView: View {
                 }
             })) {
                 switch selView {
-                case .firstView? : Text("first Screen")
+                case .firstView? : CaseTestView()
                 case .secondView? : Text("second screen")
                 case .thirdView? : Text("3 screen")
                 case .fourthView? : Text("4 screen")
@@ -132,6 +132,21 @@ struct MenuScreen: View {
                 .foregroundColor(.white)
                 .padding(5)
                 .background(.black)
+        }
+    }
+}
+
+struct CaseTestView: View {
+    var body: some View {
+        VStack(){
+            Text("Input")
+            Text("Output")
+            Rectangle()
+                .size(width: 200, height: 20)
+                .fill(Color.green)
+            Text("CALCULATE")
+                .bold()
+                .foregroundColor(Color.red)
         }
     }
 }
