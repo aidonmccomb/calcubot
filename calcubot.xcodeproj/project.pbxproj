@@ -15,6 +15,7 @@
 		3F6511C127FF59AD0086F205 /* calcubotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6511C027FF59AD0086F205 /* calcubotUITests.swift */; };
 		3F6511C327FF59AD0086F205 /* calcubotUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6511C227FF59AD0086F205 /* calcubotUITestsLaunchTests.swift */; };
 		3F6511D02805DAFA0086F205 /* GearRatioScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6511CF2805DAF90086F205 /* GearRatioScreen.swift */; };
+		3F676A8B28073D130064D7D1 /* FormSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F676A8A28073D130064D7D1 /* FormSection.swift */; };
 		3F78F1672805EC9300B4AEBC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F78F1662805EC9300B4AEBC /* ContentView.swift */; };
 		3FEB28AB28071EF800C62A52 /* UnitConScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEB28AA28071EF700C62A52 /* UnitConScreen.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 		3F6511C027FF59AD0086F205 /* calcubotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calcubotUITests.swift; sourceTree = "<group>"; };
 		3F6511C227FF59AD0086F205 /* calcubotUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calcubotUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3F6511CF2805DAF90086F205 /* GearRatioScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearRatioScreen.swift; sourceTree = "<group>"; };
+		3F676A8A28073D130064D7D1 /* FormSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSection.swift; sourceTree = "<group>"; };
 		3F78F1662805EC9300B4AEBC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3FEB28AA28071EF700C62A52 /* UnitConScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,6 +107,7 @@
 				3F6511A727FF59A40086F205 /* Trial_1.swift */,
 				3F6511CF2805DAF90086F205 /* GearRatioScreen.swift */,
 				3FEB28AA28071EF700C62A52 /* UnitConScreen.swift */,
+				3F676A8A28073D130064D7D1 /* FormSection.swift */,
 				3F6511A927FF59AC0086F205 /* Assets.xcassets */,
 				3F6511AB27FF59AC0086F205 /* Preview Content */,
 			);
@@ -271,6 +274,7 @@
 				3FEB28AB28071EF800C62A52 /* UnitConScreen.swift in Sources */,
 				3F78F1672805EC9300B4AEBC /* ContentView.swift in Sources */,
 				3F6511A627FF59A40086F205 /* calcubotApp.swift in Sources */,
+				3F676A8B28073D130064D7D1 /* FormSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

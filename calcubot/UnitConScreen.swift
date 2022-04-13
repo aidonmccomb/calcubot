@@ -28,7 +28,8 @@ struct UnitConScreen: View {
                 .mask(myMask)
                 .padding()
         }
-        .background(Color.mint)
+        .background(
+            LinearGradient(gradient: Gradient(colors: [.cyan, .gray]), startPoint: .top, endPoint: .bottom))
     }
 }
 

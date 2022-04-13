@@ -77,9 +77,7 @@ struct ContentView: View {
                     }
                 }
             }
-        }
-        //Nav Bar
-        .navigationBarTitle(Text("Calcubot").font(.subheadline), displayMode: .large)
+        }.navigationTitle("Calcubot")
     }
 }
 
