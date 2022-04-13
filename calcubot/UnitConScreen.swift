@@ -8,16 +8,27 @@
 import SwiftUI
 
 struct UnitConScreen: View {
+    var myMask: some View {
+        Circle()
+            .stroke(Color.black, lineWidth:50)
+    }
+    
     var body: some View {
-        background()
-        VStack(alignment: .center, spacing: 10) {
-            Text("Unit Conersion").padding()
+        LazyVStack(alignment: .center) {
+            Text("Unit Conersion")
+                .bold()
+                .padding()
             Rectangle()
                 .fill(Color.pink)
                 .frame(width: 100, height: 100)
+                .padding()
+            Circle()
+                .fill(Color.orange)
+                .frame(width: 150, height: 150)
+                .mask(myMask)
+                .padding()
         }
         .background(Color.mint)
-        
     }
 }
 
