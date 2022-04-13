@@ -9,64 +9,6 @@ import SwiftUI
 
 //Copy paste from online
 
-extension View {
-    @inlinable
-    public func reverseMask<Mask: View>(
-        alignment: Alignment = .center,
-        @ViewBuilder _ mask: () -> Mask
-    ) -> some View {
-        self.mask {
-            Rectangle()
-                .overlay(alignment: alignment) {
-                    mask()
-                        .blendMode(.destinationOut)
-                }
-        }
-    }
-}
-
-//Copy paste from online
-
-struct Polygon : Shape {
-    var sides : Int = 5
-    
-    func path(in rect : CGRect ) -> Path{
-        // get the center point and the radius
-        let center = CGPoint(x: rect.width / 2, y: rect.height / 2)
-        let radius = rect.width / 2
-        
-        // get the angle in radian,
-        // 2 pi divided by the number of sides
-        let angle = Double.pi * 2 / Double(sides)
-        var path = Path()
-        var startPoint = CGPoint(x: 0, y: 0)
-        
-        for side in 0 ..< sides {
-            
-            let x = center.x + CGFloat(cos(Double(side) * angle)) * CGFloat (radius)
-            let y = center.y + CGFloat(sin(Double(side) * angle)) * CGFloat(radius)
-            
-            let vertexPoint = CGPoint( x: x, y: y)
-            
-            if (side == 0) {
-                startPoint = vertexPoint
-                path.move(to: startPoint )
-            }
-            else {
-                path.addLine(to: vertexPoint)
-            }
-            
-            // move back to starting point
-            // needed for stroke
-            if ( side == (sides - 1) ){
-                path.addLine(to: startPoint)
-            }
-        }
-        
-        return path
-    }
-}
-
 struct ContentView: View {
     let columns = Array(repeating: GridItem(.flexible(minimum: 150, maximum: 200)), count: 2)
     var body: some View {
@@ -75,10 +17,11 @@ struct ContentView: View {
                 //Button 1
                 NavigationLink(destination: GearRatioScreen()){
                     ZStack(){
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(Color.red)
-                        .frame(width: 150, height: 150).padding()
-                    Text("Caption").foregroundColor(Color.pink)
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.pink)
+                            .frame(width: 150, height: 150).padding()
+                        Text("Caption").bold().italic().foregroundColor(Color.pink)
+                            .colorInvert()
                     }
                 }
                 //Button 2
@@ -152,9 +95,6 @@ struct ViewOne: View{
             Rectangle()
                 .fill(Color.blue)
                 .frame(width: 200, height: 200)
-                .reverseMask{
-                    
-                }
         }
     }
 }
@@ -162,19 +102,23 @@ struct ViewOne: View{
 struct ViewTwo: View {
     var body: some View {
         HStack {
-            Color.yellow
+            Rectangle()
+                .fill(Color.mint)
                 .frame(width: 200, height: 200)
-                .mask {
-                    Polygon(sides: 5)
+                .mask{
+                    Circle().size(width:100,height: 100)
                 }
-                .border(.red)
+                .border(.blue)
             
-            Color.yellow
+            Circle()
+                .fill(Color.yellow)
                 .frame(width: 200, height: 200)
-                .reverseMask {
-                    Polygon(sides: 5)
+                .overlay(alignment: .center) {
+                    Circle()
+                        .fill(Color.red)
+                        .frame(width: 100, height: 100)
+                        .blendMode(.destinationOut)
                 }
-                .border(.red)
         }
     }
 }
