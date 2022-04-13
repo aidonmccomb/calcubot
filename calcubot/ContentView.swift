@@ -47,7 +47,7 @@ struct ContentView: View {
                     }
                 }
                 //Button 4
-                NavigationLink(destination: Text("placeholder")){
+                NavigationLink(destination: UnitConScreen()){
                     ZStack(){
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color.green)
