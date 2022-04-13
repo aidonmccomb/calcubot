@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+//Copy paste from online
+
 extension View {
     @inlinable
     public func reverseMask<Mask: View>(
@@ -22,6 +24,8 @@ extension View {
         }
     }
 }
+
+//Copy paste from online
 
 struct Polygon : Shape {
     var sides : Int = 5
