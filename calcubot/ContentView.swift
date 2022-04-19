@@ -22,7 +22,7 @@ struct ContentView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color.pink)
                             .frame(width: 150, height: 150).padding()
-                        Text("Caption").bold().italic().foregroundColor(Color.pink)
+                        Text("Image").bold().italic().foregroundColor(Color.pink)
                             .colorInvert()
                     }
                 }
@@ -32,7 +32,7 @@ struct ContentView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color.green)
                             .frame(width: 150, height: 150).padding()
-                        Text("Title")
+                        Text("View One")
                             .foregroundColor(Color.blue)
                     }
                 }
@@ -42,7 +42,7 @@ struct ContentView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color.green)
                             .frame(width: 150, height: 150).padding()
-                        Text("Title")
+                        Text("View Two")
                             .foregroundColor(Color.blue)
                     }
                 }
@@ -52,7 +52,7 @@ struct ContentView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color.green)
                             .frame(width: 150, height: 150).padding()
-                        Text("Title")
+                        Text("Unit Conversion")
                             .foregroundColor(Color.blue)
                     }
                 }
@@ -62,7 +62,7 @@ struct ContentView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color.green)
                             .frame(width: 150, height: 150).padding()
-                        Text("Title")
+                        Text("placeholder")
                             .foregroundColor(Color.blue)
                     }
                 }
@@ -72,7 +72,7 @@ struct ContentView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color.green)
                             .frame(width: 150, height: 150).padding()
-                        Text("Title")
+                        Text("placeholder")
                             .foregroundColor(Color.blue)
                     }
                 }

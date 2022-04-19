@@ -11,7 +11,8 @@ import SwiftUI
 struct calcubotApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //ContentView()
+            EntryBoxes()
         }
     }
 }

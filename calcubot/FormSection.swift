@@ -16,6 +16,11 @@ struct FormSection: View {
                     .fill(
                         LinearGradient(gradient: Gradient(colors: [.pink, .black]), startPoint: .topLeading, endPoint: .bottomTrailing))
             }
+            Section {
+                Text("New Section")
+                Rectangle()
+                    .fill(Color.mint)
+            }
         }
     }
 }
